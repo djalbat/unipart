@@ -50,7 +50,7 @@ const TableRow = (props) => {
 
   return (
 
-    <tr className={`${className} data`}>
+    <tr className={`${className}`}>
       {tableCells}
     </tr>
 
@@ -66,5 +66,6 @@ module.exports = withStyle(TableRow)`
 const Td = withStyle.td`
 
   padding: 0.5rem;
+  vertical-align: top;
   
 `;

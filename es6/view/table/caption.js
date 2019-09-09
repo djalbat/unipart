@@ -9,7 +9,7 @@ const TableCaption = (props) => {
 
   return (
 
-    <caption className={`${className} data`}>
+    <caption className={`${className}`}>
       {label}
     </caption>
 

@@ -15,35 +15,35 @@ const TableRows = (props) => {
                 levelRowSpan = levelRowSpanFromLocations(locations);
 
           locations.forEach((location) => {
-            let { name } = location;
+            let { name } = location,
+                nameRowSpan,
+                nameColSpan;
 
             const { stock } = location,
                   stocks = stock, ///
                   stocksLength = stocks.length;
 
             if (stocksLength === 0) {
-              const nameRowSpan = 1,
-                    nameColSpan = 4;
+              const stock = undefined;  ///
 
+              stocks.push(stock);
+
+              nameRowSpan = 1;
+              nameColSpan = 4;
+            } else {
+              nameColSpan = 1;
+              nameRowSpan = nameRowSpanFromStocks(stocks);
+            }
+
+            stocks.forEach((stock) => {
               dataTableRows.push(
 
-                <TableRow level={level} name={name} levelRowSpan={levelRowSpan} nameRowSpan={nameRowSpan} nameColSpan={nameColSpan} />
+                <TableRow level={level} name={name} stock={stock} levelRowSpan={levelRowSpan} nameRowSpan={nameRowSpan} nameColSpan={nameColSpan} />
 
               );
-            } else {
-              stocks.forEach((stock) => {
-                const nameColSpan = 1,
-                      nameRowSpan = nameRowSpanFromStocks(stocks);
 
-                dataTableRows.push(
-
-                  <TableRow level={level} name={name} stock={stock} levelRowSpan={levelRowSpan} nameRowSpan={nameRowSpan} nameColSpan={nameColSpan} />
-
-                );
-
-                name = undefined; ///
-              });
-            }
+              name = undefined; ///
+            });
 
             level = undefined;  ///
           });

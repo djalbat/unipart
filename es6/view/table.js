@@ -12,7 +12,7 @@ const Table = (props) => {
 
   return (
 
-    <table className={`${className} data`}>
+    <table className={`${className}`}>
       <TableCaption data={data} />
       <thead>
         <TableHead />

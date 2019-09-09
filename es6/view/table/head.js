@@ -7,7 +7,7 @@ const TableHead = (props) => {
 
   return (
 
-    <tr className={`${className} data`}>
+    <tr className={`${className}`}>
       <Th>
         Level
       </Th>
