@@ -64,8 +64,6 @@ class LdapEntry:
     def __getattr__(self, key):
         if key in self.dictionary:
             return retrieve(self.dictionary, key)
-        else:
-            raise AttributeError
 
 
 e = LdapEntry(ldapDictionary)
