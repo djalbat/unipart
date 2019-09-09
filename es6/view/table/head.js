@@ -2,35 +2,41 @@
 
 const withStyle = require('reaction-with-style');  ///
 
-const DataTableHead = (props) => {
-  const { className } = DataTableHead;
+const TableHead = (props) => {
+  const { className } = TableHead;
 
   return (
 
     <tr className={`${className} data`}>
-      <th>
+      <Th>
         Level
-      </th>
-      <th>
+      </Th>
+      <Th>
         Name
-      </th>
-      <th>
+      </Th>
+      <Th>
         Product
-      </th>
-      <th>
+      </Th>
+      <Th>
         Quantity
-      </th>
-      <th>
+      </Th>
+      <Th>
         Replenishment
-      </th>
+      </Th>
     </tr>
 
   );
 };
 
-module.exports = withStyle(DataTableHead)`
+module.exports = withStyle(TableHead)`
 
   text-align: left;
   border-bottom: 2px solid black;
+  
+`;
+
+const Th = withStyle.th`
+
+  padding: 0.5rem;
   
 `;

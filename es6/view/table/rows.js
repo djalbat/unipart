@@ -1,8 +1,8 @@
 'use strict';
 
-const DataTableRow = require('../tableRow/data');
+const TableRow = require('../table/row');
 
-const DataTableRows = (props) => {
+const TableRows = (props) => {
   const { data } = props,
         { row } = data,
         rows = row, ///
@@ -19,25 +19,25 @@ const DataTableRows = (props) => {
 
             const { stock } = location,
                   stocks = stock, ///
-                  nameRowSpan = nameRowSpanFromStocks(stocks),
                   stocksLength = stocks.length;
 
             if (stocksLength === 0) {
-              const nameColSpan = 4;
+              const nameRowSpan = 1,
+                    nameColSpan = 4;
 
               dataTableRows.push(
 
-                <DataTableRow level={level} name={name} levelRowSpan={levelRowSpan} nameRowSpan={nameRowSpan} nameColSpan={nameColSpan} />
+                <TableRow level={level} name={name} levelRowSpan={levelRowSpan} nameRowSpan={nameRowSpan} nameColSpan={nameColSpan} />
 
               );
             } else {
               stocks.forEach((stock) => {
-                const { product, qty, replenishment } = stock,
-                      nameColSpan = 1;
+                const nameColSpan = 1,
+                      nameRowSpan = nameRowSpanFromStocks(stocks);
 
                 dataTableRows.push(
 
-                  <DataTableRow level={level} name={name} product={product} qty={qty} replenishment={replenishment} levelRowSpan={levelRowSpan} nameRowSpan={nameRowSpan} nameColSpan={nameColSpan} />
+                  <TableRow level={level} name={name} stock={stock} levelRowSpan={levelRowSpan} nameRowSpan={nameRowSpan} nameColSpan={nameColSpan} />
 
                 );
 
@@ -52,7 +52,7 @@ const DataTableRows = (props) => {
   return dataTableRows;
 };
 
-module.exports = DataTableRows;
+module.exports = TableRows;
 
 function nameRowSpanFromStocks(stocks) {
   const stocksLength = stocks.length,

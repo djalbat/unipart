@@ -2,7 +2,7 @@
 
 const withStyle = require('reaction-with-style');  ///
 
-const DataTable = require('../table/data');
+const Table = require('./table');
 
 const LayoutSection = (props) => {
   const { data } = props,
@@ -11,7 +11,7 @@ const LayoutSection = (props) => {
   return (
 
     <section className={`${className} layout`}>
-      <DataTable data={data} />
+      <Table data={data} />
     </section>
 
   );

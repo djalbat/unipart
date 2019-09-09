@@ -6,7 +6,7 @@ const reaction = require('reaction'),
       withStyle = require('reaction-with-style'); ///
 
 const data = require('./data'),
-      LayoutSection = require('./section/layout');
+      LayoutSection = require('./view/layoutSection');
 
 const { ReactDOM } = reaction,
       { renderStyles } = withStyle;

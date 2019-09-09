@@ -2,10 +2,10 @@
 
 const withStyle = require('reaction-with-style');  ///
 
-const DataCaption = (props) => {
+const TableCaption = (props) => {
   const { data } = props,
         { label } = data,
-        { className } = DataCaption;
+        { className } = TableCaption;
 
   return (
 
@@ -16,7 +16,7 @@ const DataCaption = (props) => {
   );
 };
 
-module.exports = withStyle(DataCaption)`
+module.exports = withStyle(TableCaption)`
 
   padding: 0.5rem;
   background-color: lightGrey;
