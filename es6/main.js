@@ -5,7 +5,8 @@ require('./preamble');
 const reaction = require('reaction'),
       withStyle = require('reaction-with-style'); ///
 
-const LayoutSection = require('./section/layout');
+const data = require('./data'),
+      LayoutSection = require('./section/layout');
 
 const { ReactDOM } = reaction,
       { renderStyles } = withStyle;
@@ -16,7 +17,7 @@ renderStyles();
 
 ReactDOM.render(
 
-  <LayoutSection />
+  <LayoutSection data={data} />
 
   ,
   bodyDOMElement

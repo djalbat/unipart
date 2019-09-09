@@ -2,16 +2,16 @@
 
 const withStyle = require('reaction-with-style');  ///
 
-// const MainHeader = require('../header/main'),
-//       MainFooter = require('../footer/main'),
-//       MainSection = require('../section/main');
+const DataTable = require('../table/data');
 
 const LayoutSection = (props) => {
-  const { className } = LayoutSection;
+  const { data } = props,
+        { className } = LayoutSection;
 
   return (
 
     <section className={`${className} layout`}>
+      <DataTable data={data} />
     </section>
 
   );
@@ -19,16 +19,11 @@ const LayoutSection = (props) => {
 
 module.exports = withStyle(LayoutSection)`
 
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
+  display: grid;
+  width: 100vw;
   min-height: 100vh;
+  grid-template-rows: 4rem auto;
+  grid-template-columns: auto 50rem auto;
+  grid-template-areas: ". . ." ". data-table ." ;
 
 `;
-
-/*
-      <MainHeader />
-      <MainSection />
-      <MainFooter />
-
- */
