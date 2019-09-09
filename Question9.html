@@ -1,0 +1,189 @@
+<html>
+  <head>
+    <style>
+
+      html {
+        font-size: 32px;
+      }
+
+      *,
+      *:after,
+      *:before {
+        box-sizing: border-box;
+        border: 0;
+        margin: 0;
+        padding: 0;
+        font-size: 1rem;
+      }
+
+      body {
+        width: 100vw;
+        height: 100vh;
+        display: grid;
+        background-color: white;
+        grid-template-rows: 4rem auto;
+        grid-template-columns: auto 15rem auto;
+        grid-template-areas: ". . ." ". main ." ;
+      }
+
+      .main {
+        display: grid;
+        grid-area: main;
+        grid-template-rows: 3rem 17rem;
+        grid-template-columns: auto;
+      }
+
+      .buttons {
+        display: grid;
+        grid-template-rows: 3rem 3rem 3rem 3rem 3rem 2rem;
+        grid-template-columns: 4rem 4rem 4rem 3rem;
+      }
+
+      .display {
+        display: grid;
+        grid-template-rows: 2rem auto;
+        grid-template-columns: auto;
+      }
+
+      div.spacer {
+        width: 1px;
+        height: 1px;
+      }
+
+      button {
+        width: 3rem;
+        height: 2rem;
+        border: 2px solid black;
+      }
+
+      input[type="text"] {
+        border: 2px solid black;
+        padding: 0.5rem;
+      }
+
+    </style>
+  </head>
+  <body>
+    <div class="main">
+      <div class="display">
+        <input type="text" id="display" readonly>
+      </div>
+      <div class="buttons">
+        <button id="square-root">√</button>
+        <button id="modulo">%</button>
+        <button id="power">^</button>
+        <div class="spacer"></div>
+
+        <button id="number-7">7</button>
+        <button id="number-8">8</button>
+        <button id="number-9">9</button>
+        <button id="divide">/</button>
+
+        <button id="number-4">4</button>
+        <button id="number-5">5</button>
+        <button id="number-6">6</button>
+        <button id="multiply">×</button>
+
+        <button id="number-1">1</button>
+        <button id="number-2">2</button>
+        <button id="number-3">3</button>
+        <button id="plus">+</button>
+
+        <button id="left-bracket">(</button>
+        <button id="number-0">0</button>
+        <button id="right-bracket">)</button>
+        <button id="minus">-</button>
+
+        <button id="delete">del</button>
+        <div class="spacer"></div>
+        <div class="spacer"></div>
+        <button id="run">run</button>
+      </div>
+    </div>
+
+    <script>
+
+      const runButton = document.querySelector('#run'),
+            deleteButton = document.querySelector('#delete'),
+            displayInput = document.querySelector('#display'),
+            selectors = [
+              '#square-root',
+              '#modulo',
+              '#power',
+              '#plus',
+              '#minus',
+              '#divide',
+              '#multiply',
+              '#number-0',
+              '#number-1',
+              '#number-2',
+              '#number-3',
+              '#number-4',
+              '#number-5',
+              '#number-6',
+              '#number-7',
+              '#number-8',
+              '#number-9',
+              '#left-bracket',
+              '#right-bracket'
+            ];
+
+      selectors.forEach((selector) => {
+        const button = document.querySelector(selector);
+
+        button.onclick = (event) => {
+          const { innerText } = button,
+                text = innerText; ///
+
+          addToDisplayInput(text)
+        }
+      });
+
+      runButton.onclick = (event) => {
+        evaluateDisplayInput();
+      };
+
+      deleteButton.onclick = (event) => {
+        deleteFromDisplayInput();
+      };
+
+      function evaluateDisplayInput() {
+        let { value } = displayInput;
+
+        value = value.replace(/√/g, 'Math.sqrt');
+        value = value.replace(/×/g, '*');
+
+        try {
+          const result = eval(value);
+
+          alert(result)
+        } catch (error) {
+          alert(`The input '${value}' cannot be evaluated.`);
+        }
+      }
+
+      function addToDisplayInput(text) {
+        let { value } = displayInput;
+
+        value = `${value}${text}`;
+
+        displayInput.value = value;
+      }
+
+      function deleteFromDisplayInput() {
+        let { value } = displayInput,
+            valueLength = value.length;
+
+        if (valueLength > 0) {
+          valueLength -= 1;
+
+          value = value.substring(0, valueLength);
+        }
+
+        displayInput.value = value;
+      }
+
+    </script>
+  </body>
+</html>
+

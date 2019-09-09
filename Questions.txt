@@ -1,0 +1,375 @@
+Unipart Digital technical test (v3).
+====================================
+
+Introduction
+------------
+This test is designed to assess more than one set of skills,
+for different roles; candidates should do at least 8 of the questions,
+but may not be able to do them all (or may not find them all relevant).
+
+Please just answer inline (in this .txt file or a single .pdf if you prefer) where
+possible. If you need to send attachments, only use .pdf, or .txt, or .html,
+as  many email systems, (especially via recruiters), will "eat" attachments such as
+.(sh|py|js|zip|tgz) . We can rename .txt attachments if needed.
+
+Please do not put answers online (except for Q9,Q14,Q15), but just include your code here.
+We put a lot of effort into developing/calibrating this test, so any candidate whose online
+answers can be found with a web search including the word "Unipart" will be eliminated!
+We're usually quite keen on people who contribute to open-source, stack-overflow, github, codepen, 
+etc but this is an "exam", and the questions should not be shared.
+
+
+Q0.
+--
+1000 kg of berries are initially found to be 99% water.
+After a week, due to evaporation, the berries are 98% water.
+What is the mass of the berries now?
+
+
+
+Q1.
+---
+How would you monitor a PostgreSQL server to detect SELECTs which are
+running slowly? Having identified a poorly performing SELECT, how
+would you analyse it with a view to improving it?
+
+
+
+Q2.
+---
+A text file contains a list of numbers, one per line.
+Write a shell pipeline (i.e. a bash one-liner) which will print out the five
+most commonly occurring numbers, one per line, without surrounding whitespace, in
+descending order of frequency.
+Use of perl, awk, or any other programming language should be avoided.
+
+
+
+Q3.
+---
+Do the same in perl (or any programming language of your choice).
+Use of backticks, system() etc should be avoided.
+
+
+
+Q4.
+---
+If a physically inaccessible computer attached to your local
+network segment is firewalling all IP traffic, how would you find
+out if it is up or not?
+
+[Hint: this question is very precisely worded.]
+
+
+
+Q5.
+---
+A videoconferencing application, running on a mobile device, is
+consuming 80% CPU, and causing the battery to drain rapidly. What
+steps might you take to improve battery life?
+
+[You have the source code for the application, so you are able to
+investigate/change both the application itself and its environment]
+
+
+
+Q6.
+---
+Implement the following function in C:
+
+/**
+* Reverse the order of an array of 32-bit integers
+*
+* @v array Array of integers
+* @v count Number of elements in the array
+*
+* This function simply reverses the order of the elements in an
+* array of 32-bit integers. For example, suppose that we have:
+*
+* uint32_t array[3] = { 0x12345678, 0xdeadbeef, 0xf00df00d };
+*
+* reverse_array ( array, 3 );
+*
+* then array[] should contain { 0xf00df00d, 0xdeadbeef, 0x12345678 }.
+*/
+void reverse_array ( uint32_t *array, unsigned int count ) {
+  // Your code goes here
+}
+
+
+
+Q7.
+---
+What would the following C code print out?
+
+#include <stdio.h>
+
+int main ( int argc, char *argv[] ) {
+    int x = 1;
+    printf ( "%d %d %d\n", ++x, x, x++ );
+    return 0;
+}
+
+
+
+Q8.
+---
+Identify as many problems as you can find in the following C code
+fragment.
+
+[Hint: this is excerpted from a production codebase; it does compile ok,
+and it runs without crashing.]
+
+
+extern int process_file ( char *data, size_t len );
+
+#define BUFSIZE 4096
+
+int read_file ( int fd ) {
+    char buf[BUFSIZE];
+    ssize_t read_len;
+    size_t len = 0;
+    char *data = NULL;
+    char *tmp;
+
+    while ( ( read_len = read ( fd, buf, BUFSIZE ) ) > 0 ) {
+        tmp = malloc ( len + read_len );
+        memcpy ( tmp, data, len );
+        memcpy ( tmp + len, buf, read_len );
+        free ( data );
+        data = tmp;
+        len += read_len;
+    }
+
+    process_file ( data, len );
+
+    return 0;
+}
+
+
+
+Q9.
+---
+Write and host a single web-page that should run on a smart phone,
+implementing (in front-end javascript, not server-side) a basic calculator
+function. This does not need to be beautiful, but must support at least the
+following operations:      +  -  *  /   %  ^   SQRT.
+[By % and ^, we mean "modulo" and "to the power of"]
+It must detect and notify of illegal input (e.g. sqrt(-1)).
+Serve it up, on your own domain, over https.
+
+[Hint: letsencypt is a easy way to do the https part; the javascript should be
+less than about 100 lines; do not rely upon any external frameworks or libraries]
+
+
+
+
+Q10.
+----
+Write a script to implement the game "Fizz Buzz".
+Counting from 1 to 100, print each number in turn, on a new line.
+BUT...
+ * If the number is divisible by 3, or contains a digit 3,
+    print "Fizz" instead of the number.
+ * Similarly, for 5s, print "Buzz".
+ * If both the "3" and "5" conditions, "Fizz Buzz".
+
+
+
+
+Q11.
+----
+Stock within a warehouse is represented by rows in the following
+database table:
+
+  CREATE TABLE stock (
+    id SERIAL,
+    product_id integer NOT NULL REFERENCES products ( id ),
+    location_id integer NOT NULL REFERENCES locations ( id ),
+    package_id integer REFERENCES packages ( id ),
+    qty integer
+  );
+
+Any products that are within the same package must, given the
+constraints of physics, be present at the same location within the
+warehouse.  Unfortunately, due to bugs in the application layer, some
+database rows violate this constraint.
+
+There are approximately two million rows in the stock table.
+
+Write a database query to identify the affected rows.
+
+
+
+
+Q12.
+----
+Entries from an LDAP user database are represented in Python as a
+dictionary of key-value pairs, where each key is a case-insensitive
+string object and each value is a list of bytes objects.  For example:
+
+  ldapdict = {
+      'objectclass': [b'inetOrgPerson', b'person'],
+      'cn': [b'George Orwell'],
+      'givenName': [b'George'],
+      'sn': [b'Orwell'],
+      'uidNumber': [b'1984'],
+      'gidNumber': [b'1984'],
+      'mail': [
+      b'george.orwell@example.com',
+      b'big.brother@example.com',
+  ],
+  }
+
+Create an LdapEntry class with attributes for each of the keys listed
+above that can be used as follows:
+
+  e = LdapEntry(ldapdict)
+  assert(e.cn == 'George Orwell')
+  assert(e.uidNumber == 1984)
+  assert('big.brother@example.com' in e.mail)
+  assert(len(e.mail) == 2)
+
+
+
+
+Q13.
+----
+A Python method needs to process a large number of database records.
+If each record is processed individually, then there will be one round
+trip to the database for each record; this results in a large number
+of separate database queries and a slow overall run time.  If all
+records are processed as a single batch, then the system will run out
+of memory.
+
+A single database search has completed and returned an iterable "records" that
+will yield each database record identifier in turn, in order that the records
+may then be processed.  For example:
+
+  # Processing records individually (very slow):
+  for index, record in enumerate(records):
+      print("Processing record %d" % index)
+      process([record])
+
+  # Processing all records as a single batch (runs out of memory):
+  all_records = list(records)
+  print("Processing records 0-%d" % (len(all_records) - 1))
+  process(all_records)
+
+For optimal performance, records should be processed in batches.
+Create a generator function "batched" that will yield batches of 1000
+records at a time and can be used as follows:
+
+  # Processing records in batches of 1000 (optimal):
+  for subrange, batch in batched(records, size=1000):
+      print("Processing records %d-%d" %
+        (subrange[0], subrange[-1]))
+      process(batch)
+
+
+
+
+
+Q14.
+----
+
+JSON (see appendix below) is returned from an API
+end-pointing for a warehouse management system.
+Read and display the data, preferably using React, semantically
+correct HTML and CSS.
+
+Extend your code above to hide or show the visibility of the data
+within the "stock" attribute, depending upon whether a checkbox is
+clicked on the page.
+
+
+
+
+Q15.
+---
+Call the following API, and display the data found on an HTML page,
+using HTML elements injected via jQuery or native JavaScript only.  If
+no data is returned display, "No data found".
+https://api.github.com/users/unipartdigital
+
+Your code should include error handling which is utilised if the API is
+down or returns an error.
+
+
+
+
+
+
+
+Appendix: JSON for Q14.
+-----------------------
+
+
+{
+  "label":"VZ-01",
+  "row":[
+    {
+      "level":1,
+      "locations":[
+        {
+          "name":"VZ-01-01",
+          "stock":[
+            {
+              "product":"Left door",
+              "qty":100,
+              "replenishment":"slow"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "level":2,
+      "locations":[
+        {
+          "name":"VZ-01-02",
+          "stock":[
+
+          ]
+        },
+        {
+          "name":"VZ-02-02",
+          "stock":[
+            {
+              "product":"Rear brake disk",
+              "qty":3,
+              "replenishment":"fast"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "level":3,
+      "locations":[
+        {
+          "name":"VZ-01-03",
+          "stock":[
+            {
+              "product":"Front brake disk",
+              "qty":2,
+              "replenishment":"standard"
+            }
+          ]
+        },
+        {
+          "name":"VZ-01-04",
+          "stock":[
+            {
+              "product":"Shock",
+              "qty":10,
+              "replenishment":"standard"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+
+

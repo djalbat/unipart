@@ -1,0 +1,63 @@
+\documentclass{article}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\usepackage{enumitem}
+\usepackage{listings}
+
+\begin{document}
+
+\begin{enumerate}[start=0]
+\item We calculate $l$, the loss of water due to evaporation:
+
+\begin{align*}
+\frac{990-l}{1000-l} & = 0.98 \\
+\\
+990 - l & = 0.98(1000-l) \\
+990 - 980 & = -0.98l + l \\
+10 & = 0.02l\\
+\\
+\therefore l = 500
+\end{align*}
+
+So the remaining mass is $1000 - 500 = 500$.
+
+\item Googling ``postgre detect slow running queries'' returned \url{https://www.cybertec-postgresql.com/en/3-ways-to-detect-slow-queries-in-postgresql/}, which seemed well written at a glance. 
+
+It suggests using the slow query log. The log is turned off by default, there are instructions to turn it on globally or for specific users or databases. 
+
+There is also an explanation of the \texttt{auto\_explain} module, which is again useful for tracking down isolated long running queries but additionally logs execution plans which can be examined to find the actual cause of long running queries. The example given shows queries that are essentially the same, however the first uses an index scan whereas the second uses a sequential scan, resulting in running times will be around a millisecond versus more like a second, respectively.
+
+The third option is \texttt{pg\_stat\_statements}. The usage reminded me of the \texttt{top} command for monitoring memory usage. You get a view that gives you fine grained, cumulative data on all the queries that run. It is not always great at identifying individual slow running queries, however.
+
+\item \texttt{sort \$1 | uniq -c | sort -nr | head -5 | cut -c9-}
+
+\item Please see \texttt{Question3.js}. I assumed that there was no requirement to do it on one line this time.
+
+\item I am no expert on networks so I read \url{http://www.linfo.org/network_segment.html}, which states that ``each segment can be protected from the other segments by using firewalls...through which data moving between segments must pass.'' Therefore to test whether the fillwall is up, I would suggest pinging a known IP address outside of the segment, one of a public Internet site, say, from a computer inside the segment, assuming that it is known that ICMP, the protocol that supports ping, is not disallowed by the firewall.
+
+\item Activities other than CPU usage can drain the battery. The screen, for example, together with services such as GPS and of course network usage. Making sure the application is not waking the screen or using these services unnecessarily, especially when there is no user input, is a good start.
+
+The question suggests that the reason for battery drain is CPU usage, however, therefore the best course of action is to reduce that. The Android SDK provides several options for profiling apps in development, documented at \url{https://developer.android.com/studio/profile}. iOS developers on the other hand can use XCode's Instruments, documented at \url{https://help.apple.com/instruments/mac/current/}.
+
+\item Please see \texttt{Question6.c}.
+
+\item The na\"{i}ve answer would be 2 2 2, because the \texttt{++x} expression increments the value of \texttt{x} before it is evaluated and therefore evaluates to 2, the \texttt{x} expression leaves the value alone and also evaluates to 2, and the \texttt{x++} expression also evaluates to 2 prior to incrementing the value. However, the actual answer is 3 3 1, the order of evaluation being effectively right to left because of the cdecl calling convention.
+
+\item -
+
+\item Please see \url{https://aleph-one.com/Question9}.
+
+\item Please see \texttt{Question10.js}.
+
+\item Please see \texttt{Question11.sql}. 
+
+\item Please see \texttt{Question12.py}. 
+
+\item Please see \texttt{Question13.py}. 
+
+\end{enumerate}
+
+
+\end{document}
