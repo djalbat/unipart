@@ -35,7 +35,7 @@ The third option is \texttt{pg\_stat\_statements}. The usage reminded me of the 
 
 \item Please see \texttt{Answer3.js}. I assumed that there was no requirement to do it on one line this time.
 
-\item I am no expert on networks so I read \url{http://www.linfo.org/network_segment.html}, which states that ``each segment can be protected from the other segments by using firewalls...through which data moving between segments must pass.'' Therefore to test whether the fillwall is up, I would suggest pinging a known IP address outside of the segment, one of a public Internet site, say, from a computer inside the segment, assuming that it is known that ICMP, the protocol that supports ping, is not disallowed by the firewall.
+\item I read \url{http://www.linfo.org/network_segment.html}, which states that ``each segment can be protected from the other segments by using firewalls...through which data moving between segments must pass.'' Therefore to test whether the fillwall is up, I would suggest pinging a known IP address outside of the segment, one of a public Internet site, say, from a computer inside the segment, assuming that it is known that ICMP, the protocol that supports ping, is not disallowed by the firewall.
 
 \item Activities other than CPU usage can drain the battery. The screen, for example, together with services such as GPS and of course network usage. Making sure the application is not waking the screen or using these services unnecessarily, especially when there is no user input, is a good start.
 
