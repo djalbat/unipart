@@ -7,6 +7,4 @@ const server = express(), ///
 
 server.use(staticRouter);
 
-server.listen(8000);
-
-
+server.listen(8888);
