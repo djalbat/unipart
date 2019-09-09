@@ -33,7 +33,7 @@ The third option is \texttt{pg\_stat\_statements}. The usage reminded me of the 
 
 \item \texttt{sort \$1 | uniq -c | sort -nr | head -5 | cut -c9-}
 
-\item Please see \texttt{Question3.js}. I assumed that there was no requirement to do it on one line this time.
+\item Please see \texttt{Answer3.js}. I assumed that there was no requirement to do it on one line this time.
 
 \item I am no expert on networks so I read \url{http://www.linfo.org/network_segment.html}, which states that ``each segment can be protected from the other segments by using firewalls...through which data moving between segments must pass.'' Therefore to test whether the fillwall is up, I would suggest pinging a known IP address outside of the segment, one of a public Internet site, say, from a computer inside the segment, assuming that it is known that ICMP, the protocol that supports ping, is not disallowed by the firewall.
 
@@ -41,21 +41,21 @@ The third option is \texttt{pg\_stat\_statements}. The usage reminded me of the 
 
 The question suggests that the reason for battery drain is CPU usage, however, therefore the best course of action is to reduce that. The Android SDK provides several options for profiling apps in development, documented at \url{https://developer.android.com/studio/profile}. iOS developers on the other hand can use XCode's Instruments, documented at \url{https://help.apple.com/instruments/mac/current/}.
 
-\item Please see \texttt{Question6.c}.
+\item Please see \texttt{Answer6.c}.
 
 \item The na\"{i}ve answer would be 2 2 2, because the \texttt{++x} expression increments the value of \texttt{x} before it is evaluated and therefore evaluates to 2, the \texttt{x} expression leaves the value alone and also evaluates to 2, and the \texttt{x++} expression also evaluates to 2 prior to incrementing the value. However, the actual answer is 3 3 1, the order of evaluation being effectively right to left because of the cdecl calling convention.
 
 \item -
 
-\item Please see \url{https://aleph-one.com/Question9}.
+\item Please see \url{https://aleph-one.com/Answer9}.
 
-\item Please see \texttt{Question10.js}.
+\item Please see \texttt{Answer10.js}.
 
-\item Please see \texttt{Question11.sql}. 
+\item Please see \texttt{Answer11.sql}. 
 
-\item Please see \texttt{Question12.py}. 
+\item Please see \texttt{Answer12.py}. 
 
-\item Please see \texttt{Question13.py}. 
+\item Please see \texttt{Answer13.py}. 
 
 \end{enumerate}
 
